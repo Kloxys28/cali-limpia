@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cali Limpia - Panel Administrativo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <h1>Cali Limpia</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Chat</a>
+                <a href="admin.html" class="active">Admin</a>
+            </nav>
+        </header>
+
+        <main class="admin-container">
+            <div class="admin-header">
+                <h2>Panel Administrativo</h2>
+                <p>Estadísticas y consultas del chatbot</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Consultas</h3>
+                    <div class="stat-value" id="totalConsultas">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Barrios Consultados</h3>
+                    <div class="stat-value" id="totalBarrios">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Tipos de Residuos</h3>
+                    <div class="stat-value" id="totalTipos">0</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Barrios con más consultas</h3>
+                <div class="bar-chart" id="barriosChart">
+                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                        No hay datos suficientes para mostrar estadísticas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Tipos de residuos consultados</h3>
+                <div class="bar-chart" id="tiposChart">
+                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                        No hay datos suficientes para mostrar estadísticas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Historial de consultas</h3>
+                <div id="historialConsultas">
+                    <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                        No hay consultas registradas.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

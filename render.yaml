@@ -1,0 +1,17 @@
+# Configuración de Render para Cali Limpia
+# Documento: https://render.com/docs/yaml-spec
+
+services:
+  - type: web
+    name: cali-limpia
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
+      - key: ADMIN_USER
+        sync: false  # Se configura manualmente en el dashboard de Render
+      - key: ADMIN_PASS
+        sync: false  # Se configura manualmente en el dashboard de Render
