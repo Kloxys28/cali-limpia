@@ -215,3 +215,71 @@ const PALABRAS_CLAVE = {
     poda: ["poda", "rama", "hoja", "árbol", "césped", "jardín", "verde"],
     voluminosos: ["voluminoso", "grande", "pesado", "maquinaria", "equipo"]
 };
+
+// Empresas verificadas en Cali por tipo de residuo
+const EMPRESAS = {
+    escombros: [
+        {
+            nombre: "Ciudad Limpia",
+            telefono: "110",
+            direccion: null,
+            descripcion: "Recolección de escombros y residuos de construcción",
+            fuente: "ciudadlimpiacali.com.co"
+        },
+        {
+            nombre: "Promo Cali-Valle",
+            telefono: "487 7070 ext 123",
+            direccion: null,
+            descripcion: "Recolección de escombros y objetos inservibles",
+            fuente: "promocali.com"
+        }
+    ],
+    muebles: [
+        {
+            nombre: "Ciudad Limpia",
+            telefono: "110",
+            direccion: null,
+            descripcion: "Recolección de muebles viejos y enseres",
+            fuente: "cali.gov.co"
+        },
+        {
+            nombre: "Promo Cali-Valle",
+            telefono: "487 7070 ext 123",
+            direccion: null,
+            descripcion: "Recolección de colchones, muebles y objetos inservibles",
+            fuente: "promocali.com"
+        }
+    ],
+    electrodomesticos: [
+        {
+            nombre: "Red Verde",
+            telefono: "317 405 0510",
+            direccion: null,
+            descripcion: "Programa posconsumo de electrodomésticos (RAEE)",
+            fuente: "redverde.co"
+        },
+        {
+            nombre: "Dagma",
+            telefono: "311 623 3416",
+            direccion: null,
+            descripcion: "Autoridad ambiental - Puntos de recolección RAEE",
+            fuente: "DagmaCali"
+        }
+    ],
+    poda: [
+        {
+            nombre: "HUAO (Humus Abonos Orgánicos)",
+            telefono: "310 491 9054",
+            direccion: "Calle 3 No 43-06, Oficina 201, Cali",
+            descripcion: "Aprovechamiento de residuos forestales y jardinería",
+            fuente: "humusabonosorganicos.com"
+        },
+        {
+            nombre: "Emsirva / Emvarias",
+            telefono: "110",
+            direccion: null,
+            descripcion: "Recolección de residuos vegetales (empresa de aseo)",
+            fuente: "emvarias.com.co"
+        }
+    ]
+};

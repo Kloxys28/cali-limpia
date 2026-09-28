@@ -128,9 +128,20 @@ document.addEventListener('DOMContentLoaded', () => {
             respuesta.recomendaciones.forEach(rec => {
                 responseText += `• ${rec}\n`;
             });
-            responseText += `\n${respuesta.advertencia}`;
 
             addMessage(responseText, 'bot');
+
+            // Mostrar empresas verificadas si existen
+            const empresas = EMPRESAS[tipoEncontrado];
+            if (empresas && empresas.length > 0) {
+                setTimeout(() => {
+                    addEmpresasMessage(empresas, tipoEncontrado);
+                }, 300);
+            } else {
+                setTimeout(() => {
+                    addMessage(respuesta.advertencia, 'bot');
+                }, 300);
+            }
 
             // Mensaje de cierre
             setTimeout(() => {
@@ -138,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `¿Necesitas ayuda con algo más? Escribe "sí" para continuar o "no" para finalizar.`,
                     'bot'
                 );
-            }, 500);
+            }, 800);
         } else {
             addMessage(
                 `No entendí qué tipo de residuo necesitas. Por favor, elige uno de estos:\n\n` +
@@ -172,6 +183,73 @@ document.addEventListener('DOMContentLoaded', () => {
                 'bot'
             );
         }
+    }
+
+    function addEmpresasMessage(empresas, tipoResiduo) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message bot-message';
+
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'message-content empresas-content';
+
+        const titleP = document.createElement('p');
+        titleP.innerHTML = '<strong>📋 Empresas verificadas en Cali:</strong>';
+        contentDiv.appendChild(titleP);
+
+        const cardsContainer = document.createElement('div');
+        cardsContainer.className = 'empresas-cards';
+
+        empresas.forEach(empresa => {
+            const card = document.createElement('div');
+            card.className = 'empresa-card';
+
+            const nameH4 = document.createElement('h4');
+            nameH4.textContent = empresa.nombre;
+            card.appendChild(nameH4);
+
+            const descP = document.createElement('p');
+            descP.textContent = empresa.descripcion;
+            card.appendChild(descP);
+
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.className = 'empresa-buttons';
+
+            // Botón de llamada
+            if (empresa.telefono) {
+                const cleanPhone = empresa.telefono.replace(/[^\d]/g, '');
+                const callBtn = document.createElement('a');
+                callBtn.href = `tel:${cleanPhone}`;
+                callBtn.className = 'btn btn-call';
+                callBtn.innerHTML = `📞 ${empresa.telefono}`;
+                buttonsDiv.appendChild(callBtn);
+            }
+
+            // Botón de ubicación
+            if (empresa.direccion) {
+                const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(empresa.direccion + ', Cali, Colombia')}`;
+                const locationBtn = document.createElement('a');
+                locationBtn.href = mapsUrl;
+                locationBtn.target = '_blank';
+                locationBtn.className = 'btn btn-location';
+                locationBtn.innerHTML = '📍 Ver en mapa';
+                buttonsDiv.appendChild(locationBtn);
+            }
+
+            card.appendChild(buttonsDiv);
+
+            const sourceP = document.createElement('p');
+            sourceP.className = 'empresa-source';
+            sourceP.textContent = `Fuente: ${empresa.fuente}`;
+            card.appendChild(sourceP);
+
+            cardsContainer.appendChild(card);
+        });
+
+        contentDiv.appendChild(cardsContainer);
+        messageDiv.appendChild(contentDiv);
+        chatMessages.appendChild(messageDiv);
+
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
     function saveConsulta() {
